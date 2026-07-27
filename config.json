@@ -1,0 +1,742 @@
+{
+  "modbus_server": {
+    "ip": "192.168.101.250",
+    "port": 502,
+    "slave_id": 16,
+    "timeout": 3,
+    "retries": 3
+  },
+  "systems": {
+    "heating": {
+      "name": "Отопление",
+      "icon": "🔥",
+      "submenus": {
+        "sensors": {
+          "name": "Датчики",
+          "icon": "🌡️",
+          "type": "sensors",
+          "items": [
+            {
+              "name": "Температура подачи",
+              "address": 531,
+              "type": "int",
+              "unit": "°C",
+              "min": 0,
+              "max": 120
+            },
+            {
+              "name": "Температура обратки",
+              "address": 532,
+              "type": "int",
+              "unit": "°C",
+              "min": 0,
+              "max": 120
+            },
+            {
+              "name": "Температура наружная",
+              "address": 545,
+              "type": "float",
+              "unit": "°C",
+              "min": -50,
+              "max": 50
+            }
+          ]
+        },
+        "relays": {
+          "name": "Реле",
+          "icon": "🔌",
+          "type": "relays",
+          "items": [
+            {
+              "name": "Реле сухого хода",
+              "address": 512,
+              "bit": 0,
+              "states": [
+                "Отключено",
+                "Включено"
+              ]
+            }
+          ]
+        },
+        "pumps": {
+          "name": "Насосы",
+          "icon": "🔄",
+          "type": "pumps",
+          "items": [
+            {
+              "name": "Насос 1",
+              "address": 512,
+              "bit": 3,
+              "states": [
+                "Выкл",
+                "Вкл"
+              ],
+              "mode_address": 547,
+              "mode_states": ["Выкл", "Основной", "Резервный"]
+            }
+          ]
+        },
+        "valve": {
+          "name": "Клапан",
+          "icon": "🚪",
+          "type": "valve",
+          "items": [
+            {
+              "name": "Режим работы",
+              "address": 513,
+              "bit": 2,
+              "states": [
+                "Авто",
+                "Ручной"
+              ]
+            },
+            {
+              "name": "Открывается",
+              "address": 513,
+              "bit": 4,
+              "states": [
+                " ",
+                "Открывается"
+              ]
+            },
+            {
+              "name": "Закрывается",
+              "address": 513,
+              "bit": 5,
+              "states": [
+                " ",
+                "Закрывается"
+              ]
+            }
+          ],
+          "controls": [
+            {
+              "name": "Открыть",
+              "address": 514,
+              "value": 2,
+              "type": "int"
+            },
+            {
+              "name": "Закрыть",
+              "address": 514,
+              "value": 0,
+              "type": "int"
+            },
+            {
+              "name": "Стоп",
+              "address": 514,
+              "value": 1,
+              "type": "int"
+            }
+          ]
+        },
+        "settings": {
+          "name": "Настройки",
+          "icon": "⚙️",
+          "type": "settings",
+          "groups": [
+            {
+              "name": "Настройки насосов",
+              "items": [
+                {
+                  "name": "Задержка включения",
+                  "address": 548,
+                  "type": "int",
+                  "unit": "сек",
+                  "min": 1,
+                  "max": 60,
+                  "default": 5
+                },
+                {
+                  "name": "Задержка РПД",
+                  "address": 549,
+                  "type": "int",
+                  "unit": "сек",
+                  "min": 1,
+                  "max": 60,
+                  "default": 15
+                },
+                {
+                  "name": "Время переключения",
+                  "address": 550,
+                  "type": "int",
+                  "unit": "ч",
+                  "min": 1,
+                  "max": 300,
+                  "default": 8
+                }
+              ]
+            },
+            {
+              "name": "Настройки клапана",
+              "items": [
+                {
+                  "name": "Коэф пропорц",
+                  "address": 518,
+                  "type": "int",
+                  "unit": "%/С",
+                  "min": 1,
+                  "max": 20,
+                  "default": 2
+                },
+                {
+                  "name": "Время интегр",
+                  "address": 519,
+                  "type": "int",
+                  "unit": "сек",
+                  "min": 1,
+                  "max": 100,
+                  "default": 5
+                },
+                {
+                  "name": "Время дифференц",
+                  "address": 520,
+                  "type": "int",
+                  "unit": "сек",
+                  "min": 0,
+                  "max": 20,
+                  "default": 0
+                },
+                {
+                  "name": "Зона нечув",
+                  "address": 516,
+                  "type": "int",
+                  "unit": "С",
+                  "min": 0,
+                  "max": 20,
+                  "default": 2
+                },
+                {
+                  "name": "Время привода",
+                  "address": 521,
+                  "type": "int",
+                  "unit": "сек",
+                  "min": 0,
+                  "max": 150,
+                  "default": 15
+                }
+              ]
+            },
+            {
+              "name": "Темп график подачи",
+              "items": [
+                {
+                  "name": "Температура подачи -30°C",
+                  "address": 525,
+                  "type": "int",
+                  "unit": "°C",
+                  "min": 30,
+                  "max": 105,
+                  "default": 95
+                },
+                {
+                  "name": "Температура подачи -15°C",
+                  "address": 526,
+                  "type": "int",
+                  "unit": "°C",
+                  "min": 30,
+                  "max": 105,
+                  "default": 70
+                },
+                {
+                  "name": "Температура подачи 0°C",
+                  "address": 527,
+                  "type": "int",
+                  "unit": "°C",
+                  "min": 30,
+                  "max": 105,
+                  "default": 50
+                },
+                {
+                  "name": "Температура подачи +10°C",
+                  "address": 528,
+                  "type": "int",
+                  "unit": "°C",
+                  "min": 30,
+                  "max": 105,
+                  "default": 40
+                }
+              ]
+            },
+            {
+              "name": "Темп график обратки",
+              "items": [
+                {
+                  "name": "Температура обратки -30°C",
+                  "address": 529,
+                  "type": "int",
+                  "unit": "°C",
+                  "min": 30,
+                  "max": 105,
+                  "default": 70
+                },
+                {
+                  "name": "Температура обратки +10°C",
+                  "address": 530,
+                  "type": "int",
+                  "unit": "°C",
+                  "min": 30,
+                  "max": 105,
+                  "default": 30
+                },
+                {
+                  "name": "Влияние обратки",
+                  "address": 515,
+                  "type": "int",
+                  "unit": " ",
+                  "min": 0,
+                  "max": 5,
+                  "default": 2
+                }
+              ]
+            }
+          ]
+        },
+        "alarms": {
+          "name": "Аварии",
+          "icon": "️⚠️",
+          "type": "alarms",
+          "alarms": [
+            {
+              "name": "Ошибка Тнар!",
+              "address": 512,
+              "bit": 6,
+              "description": "Ошибка датч темп наруж возд!"
+            },
+            {
+              "name": "Сухой ход!",
+              "address": 512,
+              "bit": 5,
+              "description": "Разомкнут контакт реле сух хода!"
+            },
+            {
+              "name": "Ошибка Тпод!",
+              "address": 512,
+              "bit": 8,
+              "description": "Ошибка датч темп подачи!"
+            },
+            {
+              "name": "Ошибка Тобр!",
+              "address": 512,
+              "bit": 9,
+              "description": "Ошибка датч темп обратки!"
+            },
+             {
+              "name": "Перегрев!",
+              "address": 512,
+              "bit": 14,
+              "description": "Перегрев в отоплении!"
+            }
+          ],
+          "reset_address": 513,
+          "reset_bit": 1
+        },
+        "startstop": {
+          "name": "Вкл_Выкл",
+          "icon": "▶️",
+          "type": "startstop",
+          "items": [
+            {
+              "name": "Вкл_Выкл",
+              "address": 513,
+              "bit": 8,
+              "states": [
+                "Выкл",
+                "Вкл"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "ventilation": {
+      "name": "Вентиляция",
+      "icon": "💨",
+      "submenus": {
+        "sensors": {
+          "name": "Датчики",
+          "icon": "🌡️",
+          "type": "sensors",
+          "items": [
+            {
+              "name": "Температура притока",
+              "address": 2000,
+              "type": "float",
+              "unit": "°C"
+            },
+            {
+              "name": "Температура вытяжки",
+              "address": 2002,
+              "type": "float",
+              "unit": "°C"
+            },
+            {
+              "name": "Температура помещения",
+              "address": 2004,
+              "type": "float",
+              "unit": "°C"
+            },
+            {
+              "name": "Влажность",
+              "address": 2006,
+              "type": "float",
+              "unit": "%"
+            },
+            {
+              "name": "Давление в системе",
+              "address": 2008,
+              "type": "float",
+              "unit": "бар"
+            }
+          ]
+        },
+        "relays": {
+          "name": "Реле",
+          "icon": "🔌",
+          "type": "relays",
+          "items": [
+            {
+              "name": "Реле сухого хода",
+              "address": 2100,
+              "type": "bool"
+            },
+            {
+              "name": "Реле перепада давления",
+              "address": 2101,
+              "type": "bool"
+            }
+          ]
+        },
+        "pumps": {
+          "name": "Насосы",
+          "icon": "🔄",
+          "type": "pumps",
+          "items": [
+            {
+              "name": "Насос циркуляционный",
+              "address": 2200,
+              "type": "bool",
+              "manual_address": 2201
+            }
+          ]
+        },
+        "valve": {
+          "name": "Клапан",
+          "icon": "🚪",
+          "type": "valve",
+          "items": [
+            {
+              "name": "Положение клапана",
+              "address": 2300,
+              "type": "int",
+              "unit": "%"
+            }
+          ]
+        },
+        "settings": {
+          "name": "Настройки",
+          "icon": "⚙️",
+          "type": "settings",
+          "groups": [
+            {
+              "name": "Температурный график",
+              "items": [
+                {
+                  "name": "Температура подачи -20°C",
+                  "address": 2400,
+                  "type": "float",
+                  "unit": "°C",
+                  "min": 15,
+                  "max": 30
+                },
+                {
+                  "name": "Температура подачи +5°C",
+                  "address": 2402,
+                  "type": "float",
+                  "unit": "°C",
+                  "min": 10,
+                  "max": 25
+                },
+                {
+                  "name": "Температура подачи +20°C",
+                  "address": 2404,
+                  "type": "float",
+                  "unit": "°C",
+                  "min": 5,
+                  "max": 20
+                }
+              ]
+            }
+          ]
+        },
+        "alarms": {
+          "name": "Аварии",
+          "icon": "⚠️",
+          "type": "alarms",
+          "alarms": [
+            {
+              "name": "Перегрев",
+              "address": 2500,
+              "bit": 0,
+              "description": "Превышение температуры"
+            },
+            {
+              "name": "Ошибка вентилятора",
+              "address": 2500,
+              "bit": 1,
+              "description": "Неисправность вентилятора"
+            }
+          ],
+          "reset_address": 2501,
+          "reset_bit": 1
+        }
+      }
+    },
+    "hws": {
+      "name": "ГВС",
+      "icon": "🚿",
+      "submenus": {
+        "sensors": {
+          "name": "Датчики",
+          "icon": "🌡️",
+          "type": "sensors",
+          "items": [
+            {
+              "name": "Температура подачи ГВС",
+              "address": 3000,
+              "type": "float",
+              "unit": "°C"
+            },
+            {
+              "name": "Температура обратки ГВС",
+              "address": 3002,
+              "type": "float",
+              "unit": "°C"
+            },
+            {
+              "name": "Температура холодной воды",
+              "address": 3004,
+              "type": "float",
+              "unit": "°C"
+            },
+            {
+              "name": "Давление ГВС",
+              "address": 3006,
+              "type": "float",
+              "unit": "бар"
+            }
+          ]
+        },
+        "relays": {
+          "name": "Реле",
+          "icon": "🔌",
+          "type": "relays",
+          "items": [
+            {
+              "name": "Реле ГВС",
+              "address": 3100,
+              "type": "bool"
+            },
+            {
+              "name": "Реле циркуляции",
+              "address": 3101,
+              "type": "bool"
+            }
+          ]
+        },
+        "pumps": {
+          "name": "Насосы",
+          "icon": "🔄",
+          "type": "pumps",
+          "items": [
+            {
+              "name": "Насос ГВС",
+              "address": 3200,
+              "type": "bool",
+              "manual_address": 3201
+            },
+            {
+              "name": "Насос циркуляции",
+              "address": 3202,
+              "type": "bool",
+              "manual_address": 3203
+            }
+          ]
+        },
+        "valve": {
+          "name": "Клапан",
+          "icon": "🚪",
+          "type": "valve",
+          "items": [
+            {
+              "name": "Положение клапана",
+              "address": 3300,
+              "type": "int",
+              "unit": "%"
+            }
+          ]
+        },
+        "settings": {
+          "name": "Настройки",
+          "icon": "⚙️",
+          "type": "settings",
+          "groups": [
+            {
+              "name": "Температура подачи",
+              "items": [
+                {
+                  "name": "Температура ГВС",
+                  "address": 3400,
+                  "type": "float",
+                  "unit": "°C",
+                  "min": 40,
+                  "max": 70,
+                  "default": 55
+                }
+              ]
+            }
+          ]
+        },
+        "alarms": {
+          "name": "Аварии",
+          "icon": "⚠️",
+          "type": "alarms",
+          "alarms": [
+            {
+              "name": "Перегрев ГВС",
+              "address": 3500,
+              "bit": 0,
+              "description": "Температура ГВС выше нормы"
+            },
+            {
+              "name": "Низкое давление",
+              "address": 3500,
+              "bit": 1,
+              "description": "Давление ГВС ниже нормы"
+            }
+          ],
+          "reset_address": 3501
+        }
+      }
+    },
+    "makeup": {
+      "name": "Подпитка",
+      "icon": "💧",
+      "submenus": {
+        "sensors": {
+          "name": "Датчики",
+          "icon": "🌡️",
+          "type": "sensors",
+          "items": [
+            {
+              "name": "Давление подпитки",
+              "address": 4000,
+              "type": "float",
+              "unit": "бар"
+            },
+            {
+              "name": "Расход воды",
+              "address": 4002,
+              "type": "float",
+              "unit": "л/ч"
+            }
+          ]
+        },
+        "relays": {
+          "name": "Реле",
+          "icon": "🔌",
+          "type": "relays",
+          "items": [
+            {
+              "name": "Реле подпитки",
+              "address": 4100,
+              "type": "bool"
+            }
+          ]
+        },
+        "pumps": {
+          "name": "Насосы",
+          "icon": "🔄",
+          "type": "pumps",
+          "items": [
+            {
+              "name": "Насос подпитки",
+              "address": 4200,
+              "type": "bool",
+              "manual_address": 4201
+            }
+          ]
+        },
+        "settings": {
+          "name": "Настройки",
+          "icon": "⚙️",
+          "type": "settings",
+          "groups": [
+            {
+              "name": "Параметры подпитки",
+              "items": [
+                {
+                  "name": "Минимальное давление",
+                  "address": 4400,
+                  "type": "float",
+                  "unit": "бар",
+                  "min": 0.5,
+                  "max": 3,
+                  "default": 1.5
+                },
+                {
+                  "name": "Максимальное давление",
+                  "address": 4402,
+                  "type": "float",
+                  "unit": "бар",
+                  "min": 1,
+                  "max": 5,
+                  "default": 2.5
+                },
+                {
+                  "name": "Время работы насоса",
+                  "address": 4404,
+                  "type": "int",
+                  "unit": "сек",
+                  "min": 1,
+                  "max": 60,
+                  "default": 10
+                }
+              ]
+            }
+          ]
+        },
+        "alarms": {
+          "name": "Аварии",
+          "icon": "⚠️",
+          "type": "alarms",
+          "alarms": [
+            {
+              "name": "Низкое давление",
+              "address": 4500,
+              "bit": 0,
+              "description": "Давление ниже минимального"
+            },
+            {
+              "name": "Высокое давление",
+              "address": 4500,
+              "bit": 1,
+              "description": "Давление выше максимального"
+            },
+            {
+              "name": "Ошибка насоса",
+              "address": 4500,
+              "bit": 2,
+              "description": "Неисправность насоса подпитки"
+            }
+          ],
+          "reset_address": 4501
+        }
+      }
+    }
+  },
+  "connection": {
+    "name": "Подключение к оборудованию",
+    "icon": "📡"
+  }
+}
