@@ -17,6 +17,30 @@
           "type": "sensors",
           "items": [
             {
+              "name": "Уставка подачи по ТГ ",
+              "address": 522,
+              "type": "int",
+              "unit": "°C",
+              "min": 0,
+              "max": 120
+            },
+            {
+              "name": "Уставка подачи с учет обр ",
+              "address": 523,
+              "type": "int",
+              "unit": "°C",
+              "min": 0,
+              "max": 120
+            },
+            {
+              "name": "Уставка обратки ",
+              "address": 524,
+              "type": "int",
+              "unit": "°C",
+              "min": 0,
+              "max": 120
+            },
+            {
               "name": "Температура подачи",
               "address": 531,
               "type": "int",
