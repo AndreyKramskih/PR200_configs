@@ -22,7 +22,9 @@
               "type": "int",
               "unit": "°C",
               "min": 0,
-              "max": 120
+              "max": 120,
+              "is_setpoint": true,
+              "icon": "🎯"
             },
             {
               "name": "Уставка подачи с учет обр ",
@@ -30,7 +32,9 @@
               "type": "int",
               "unit": "°C",
               "min": 0,
-              "max": 120
+              "max": 120,
+              "is_setpoint": true,
+              "icon": "🎯"
             },
             {
               "name": "Уставка обратки ",
@@ -38,7 +42,9 @@
               "type": "int",
               "unit": "°C",
               "min": 0,
-              "max": 120
+              "max": 120,
+              "is_setpoint": true,
+              "icon": "🎯"
             },
             {
               "name": "Температура подачи",
@@ -46,7 +52,8 @@
               "type": "int",
               "unit": "°C",
               "min": 0,
-              "max": 120
+              "max": 120,
+              "icon": "🌡️"
             },
             {
               "name": "Температура обратки",
@@ -54,7 +61,8 @@
               "type": "int",
               "unit": "°C",
               "min": 0,
-              "max": 120
+              "max": 120,
+              "icon": "🌡️"
             },
             {
               "name": "Температура наружная",
@@ -62,7 +70,8 @@
               "type": "float",
               "unit": "°C",
               "min": -50,
-              "max": 50
+              "max": 50,
+              "icon": "🌡️"
             }
           ]
         },
