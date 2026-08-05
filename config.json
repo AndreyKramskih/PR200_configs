@@ -1,4 +1,5 @@
 {
+  "project_name": "Рассвет",	
   "modbus_server": {
     "ip": "192.168.101.250",
     "port": 502,
@@ -113,6 +114,7 @@
           "name": "Клапан",
           "icon": "🚪",
           "type": "valve",
+          "analog": false,
           "items": [
             {
               "name": "Режим работы",
@@ -122,6 +124,24 @@
                 "Авто",
                 "Ручной"
               ]
+            },
+            {
+              "name": "Текущее положение",
+              "address": 574,
+              "type": "int",
+              "unit": "%",
+              "min": 0,
+              "max": 100,
+              "readonly": true
+            },
+            {
+              "name": "Заданное положение",
+              "address": 575,
+              "type": "int",
+              "unit": "%",
+              "min": 0,
+              "max": 100,
+              "default": 50
             },
             {
               "name": "Открывается",
