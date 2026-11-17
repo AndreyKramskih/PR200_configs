@@ -2,11 +2,11 @@
   "project_name": "ОЛ_19",
   "connection_type": "http",
   "http_config": {
-    "base_url": "https://sslip.io",
-    "api_key": "spBOdy9g7P6bcYmlJrFSWVkN2ODomkFS",
-    "cabinet_id": "shkaf_01",
-    "is_master": false
-  },
+  "base_url": "https://152-228-98-9.sslip.io",
+  "api_key": "spBOdy9g7P6bcYmlJrFSWVkN2ODomkFS",
+  "cabinet_id": "shkaf_01",
+  "is_master": false
+},
   "modbus_server": {
     "ip": "192.168.101.250",
     "port": 502,
